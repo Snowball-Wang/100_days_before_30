@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale: 1.0">
+    <title>三十而砺 · 百日修行 | 30岁倒计时100天全能计划</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #eef2f5;
+            font-family: 'Inter', 'Segoe UI', 'Roboto', system-ui, -apple-system, 'Noto Sans', sans-serif;
+            padding: 2rem 1rem;
+            color: #1e2a3a;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.15);
+            overflow: hidden;
+            padding: 2rem 2rem 2.5rem;
+        }
+
+        /* 打印样式：完美输出PDF */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+                margin: 0;
+            }
+            .container {
+                box-shadow: none;
+                padding: 0.2in;
+                max-width: 100%;
+                border-radius: 0;
+            }
+            .badge, .section-tag {
+                break-inside: avoid;
+            }
+            h2, h3 {
+                break-after: avoid;
+            }
+            .card, .grid-item {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+            .print-hide {
+                display: none;
+            }
+        }
+
+        /* 装饰与主题色 */
+        .hero {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #f2a07e;
+            padding-bottom: 1.8rem;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            letter-spacing: -0.01em;
+            background: linear-gradient(135deg, #b45309, #d97706);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.5rem;
+        }
+        .hero .sub {
+            color: #4b5563;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+        }
+        .countdown-badge {
+            display: inline-block;
+            background: #fee2e2;
+            color: #b91c1c;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 0.8rem;
+        }
+
+        .section {
+            margin: 2.5rem 0 1.8rem;
+        }
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            border-left: 6px solid #e67e22;
+            padding-left: 20px;
+            color: #1e293b;
+        }
+        .section-title span {
+            font-size: 2rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 1.2rem 0;
+        }
+        .card {
+            background: #fefcf7;
+            border-radius: 24px;
+            padding: 1.2rem 1.5rem;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+            border: 1px solid #ffe6d5;
+            transition: all 0.2s;
+        }
+        .card h3 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: #c2410c;
+        }
+        .card ul, .timeline-list {
+            padding-left: 1.2rem;
+            margin: 0.8rem 0;
+            color: #2d3e50;
+            line-height: 1.45;
+        }
+        .card li {
+            margin: 0.6rem 0;
+        }
+
+        .phase-timeline {
+            margin: 1.5rem 0;
+        }
+        .phase-item {
+            background: #faf9f5;
+            border-left: 5px solid #e67e22;
+            margin-bottom: 1.2rem;
+            padding: 1rem 1.3rem;
+            border-radius: 18px;
+        }
+        .phase-title {
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: #b45309;
+        }
+        .phase-days {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-bottom: 0.6rem;
+        }
+
+        .daily-routine {
+            background: #f0f9f4;
+            padding: 1.2rem 1.5rem;
+            border-radius: 28px;
+            margin: 1rem 0;
+        }
+        .week-schedule {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: space-between;
+            margin: 1rem 0;
+        }
+        .day-card {
+            background: white;
+            flex: 1;
+            min-width: 130px;
+            padding: 0.8rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .highlight {
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            padding: 1.2rem;
+            border-radius: 24px;
+            margin: 1.8rem 0;
+        }
+
+        footer {
+            margin-top: 3rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #6c757d;
+            border-top: 1px solid #e9ecef;
+            padding-top: 1.5rem;
+        }
+        hr {
+            margin: 1rem 0;
+        }
+        @media (max-width: 650px) {
+            .container {
+                padding: 1rem;
+            }
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+        }
+        .table-stats {
+            width: 100%;
+            border-collapse: collapse;
+            background: #ffffff;
+            margin: 1rem 0;
+        }
+        .table-stats td, .table-stats th {
+            padding: 10px 12px;
+            border-bottom: 1px solid #e9ecef;
+            text-align: left;
+        }
+        .tracker-panel {
+            background: #f8fbff;
+            border: 1px solid #dbeafe;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin: 1rem 0;
+        }
+        .tracker-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            align-items: center;
+            margin-top: 0.9rem;
+        }
+        .tracker-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        .tracker-form label {
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #334155;
+        }
+        .tracker-form input,
+        .tracker-form select,
+        .tracker-form textarea {
+            width: 100%;
+            border: 1px solid #cbd5e1;
+            border-radius: 12px;
+            padding: 0.65rem 0.75rem;
+            font: inherit;
+            background: #fff;
+            color: #1e293b;
+        }
+        .tracker-form textarea {
+            min-height: 44px;
+            resize: vertical;
+        }
+        .button {
+            border: 0;
+            border-radius: 12px;
+            background: #2563eb;
+            color: #fff;
+            padding: 0.68rem 0.9rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+        }
+        .button:hover {
+            background: #1d4ed8;
+            box-shadow: 0 6px 14px rgba(37, 99, 235, 0.18);
+            transform: translateY(-1px);
+        }
+        .button.secondary {
+            background: #0f766e;
+        }
+        .button.secondary:hover {
+            background: #0d9488;
+        }
+        .button.ghost {
+            background: #e2e8f0;
+            color: #1e293b;
+        }
+        .button.danger {
+            background: #dc2626;
+        }
+        .button.danger:hover {
+            background: #b91c1c;
+        }
+        .tracker-summary {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.9rem;
+            margin: 1rem 0;
+        }
+        .metric-card {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 1rem;
+        }
+        .metric-card strong {
+            display: block;
+            font-size: 1.7rem;
+            color: #0f172a;
+            margin-top: 0.25rem;
+        }
+        .progress-list {
+            display: grid;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        .progress-row {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 0.9rem;
+        }
+        .progress-head {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.5rem;
+            margin-bottom: 0.6rem;
+            font-weight: 800;
+        }
+        .progress-bar {
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        .progress-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #22c55e, #2563eb);
+        }
+        .tracker-table-wrap {
+            overflow-x: auto;
+            margin-top: 1rem;
+        }
+        .tracker-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            min-width: 720px;
+        }
+        .tracker-table th,
+        .tracker-table td {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0.7rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        .tracker-table th {
+            color: #475569;
+            font-size: 0.84rem;
+            text-transform: uppercase;
+        }
+        .empty-state {
+            color: #64748b;
+            padding: 1rem;
+            background: #fff;
+            border-radius: 14px;
+            border: 1px dashed #cbd5e1;
+            margin-top: 1rem;
+        }
+        .tracker-hint {
+            color: #64748b;
+            font-size: 0.9rem;
+            line-height: 1.45;
+            margin-top: 0.55rem;
+        }
+        @media (max-width: 650px) {
+            .tracker-actions {
+                align-items: stretch;
+            }
+            .button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="hero">
+        <h1>🎂 三十而砺 · 百日修行</h1>
+        <div class="sub">从2026年6月9日 → 9月16日 | 硬核CS · 琴心剑胆 · 步履不停</div>
+        <div class="countdown-badge">🎯 生日终点站：苏格兰 Corrour 火车站 · 猜火车朝圣</div>
+    </div>
+
+    <!-- 总体概览卡片 -->
+    <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px,1fr));">
+        <div class="card"><h3>📚 CS 六脉神剑</h3><ul><li>CSAPP (剩余2实验)</li><li>MIT 6.S081</li><li>CS144 计算机网络</li><li>CS231n 视觉</li><li>CS336 LLM</li><li>Zurich 体系结构</li></ul></div>
+        <div class="card"><h3>🎵 古琴 · 酒狂</h3><ul><li>从零基础 → 完整弹出《酒狂》</li><li>每天30-45分钟沉浸练习</li><li>运用跪指/醉态节奏</li></ul></div>
+        <div class="card"><h3>🏃 百公里计划</h3><ul><li>100天累计跑100公里</li><li>日均1公里，每周5-6天</li><li>晨跑/傍晚放松跑</li></ul></div>
+        <div class="card"><h3>🎙️ 雅思口语6.5+</h3><ul><li>分阶段攻破Part1-3</li><li>影子跟读+录音复盘</li><li>第90-100天正式考试</li></ul></div>
+    </div>
+
+    <!-- 宏观日程 + 阶段路线 -->
+    <div class="section">
+        <div class="section-title"><span>🗓️</span> 百日里程碑 · 四阶递进</div>
+        <div class="phase-timeline">
+            <div class="phase-item"><div class="phase-title">第一阶段 · 晨曦筑基 (Day 1–20)</div><div class="phase-days">6月9日 - 6月28日</div><ul><li><strong>CS:</strong> CSAPP 剩余两个实验 (Malloc/Proxy) 攻坚完成；CS144 前3个实验 (TCP初探)</li><li><strong>古琴:</strong> 识谱+左右手基础指法，开指小曲《仙翁操》</li><li><strong>口语:</strong> 影子跟读BBC，Part1流利度训练，纠音打卡</li><li><strong>跑步:</strong> 累计18~20公里 (适应每日1公里+周末加量)</li></ul></div>
+            <div class="phase-item"><div class="phase-title">第二阶段 · 风暴崛起 (Day 21–50)</div><div class="phase-days">6月29日 - 7月28日</div><ul><li><strong>CS:</strong> MIT 6.S081 完成全部10个实验 (OS核心)，CS144 剩余实验收尾</li><li><strong>古琴:</strong> 攻克跪指难点，开始《酒狂》第一、二段旋律</li><li><strong>口语:</strong> 构建Part2万能故事库，录音回放自评，逻辑连接词训练</li><li><strong>跑步:</strong> 累计至45~50公里，持续有氧耐力</li></ul></div>
+            <div class="phase-item"><div class="phase-title">第三阶段 · 双峰并进 (Day 51–80)</div><div class="phase-days">7月29日 - 8月27日</div><ul><li><strong>CS:</strong> CS231n 全部作业 + CS336 (LLM) 课程与最终项目， Zurich体系结构周末推进</li><li><strong>古琴:</strong> 完整串弹《酒狂》全曲，稳定节奏 + 强弱处理</li><li><strong>口语:</strong> 主攻 Part3 辩证观点，全真模拟套题，雅思考位确认 (8月底或9月初)</li><li><strong>跑步:</strong> 累计达到80公里，冲刺最后里程</li></ul></div>
+            <div class="phase-item"><div class="phase-title">第四阶段 · 淬火冲刺 (Day 81–100)</div><div class="phase-days">8月28日 - 9月16日</div><ul><li><strong>CS:</strong> 查漏补缺，综合项目demo，整理代码仓库为30岁献礼</li><li><strong>古琴:</strong> 每日完整演奏2-3遍《酒狂》，录制演奏视频留念</li><li><strong>雅思口语:</strong> 正式考试 (建议第92-96天)，维持语感，轻松心态</li><li><strong>跑步:</strong> 完成100公里里程碑，生日当天站上Corrour前庆祝</li></ul></div>
+        </div>
+    </div>
+
+    <!-- 详细周作息 & 每日融合 -->
+    <div class="section">
+        <div class="section-title"><span>⏳</span> 典型一周 · 多线程优雅融合</div>
+        <div class="daily-routine">
+            <p style="font-weight:700; margin-bottom:10px;">✨ 每日时间分配建议 (总耗时 ≈ 5-5.5小时)</p >
+            <ul style="list-style-type: none;">
+                <li>🌅 早晨 07:30-07:50 &nbsp; <strong>跑步1~2公里</strong> (唤醒身体，10-15分钟)</li>
+                <li>☕ 上午 09:00-12:30 &nbsp; <strong>CS核心攻坚</strong> (6.S081 / CS144实验 / CS231n代码，3-3.5h)</li>
+                <li>🍃 午休/间隙 &nbsp; 雅思口语泛听+影子跟读 15分钟</li>
+                <li>🌙 晚间 19:30-20:15 &nbsp; <strong>古琴沉浸</strong> (40分钟，心流切换)</li>
+                <li>📖 睡前 21:00-21:45 &nbsp; <strong>雅思口语专项训练</strong> (45分钟，Part2/3)</li>
+                <li>周末整块时间：周六加练CS实验+古琴长课时；周日复盘+模拟口语模考+跑量增加</li>
+            </ul>
+        </div>
+        <div class="week-schedule">
+            <div class="day-card"><strong>周一</strong><br>CS 3h + 口语45' + 跑1.5km</div>
+            <div class="day-card"><strong>周二</strong><br>CS 3h + 古琴40' + 跑1.5km</div>
+            <div class="day-card"><strong>周三</strong><br>CS 3h + 口语45' + 跑休/拉伸</div>
+            <div class="day-card"><strong>周四</strong><br>CS 3h + 古琴40' + 跑2km</div>
+            <div class="day-card"><strong>周五</strong><br>CS 3h + 口语模拟题+跑1km</div>
+            <div class="day-card"><strong>周六</strong><br>CS 5h + 古琴1.5h + 跑3~4km</div>
+            <div class="day-card"><strong>周日</strong><br>复盘周计划 + 口语模考 + 跑2km/瑜伽</div>
+        </div>
+    </div>
+
+    <!-- CS 课程更细颗粒 -->
+    <div class="section">
+        <div class="section-title"><span>💻</span> 硬核CS · 100天攻克路线图</div>
+        <div class="card-grid">
+            <div class="card"><h3>🔧 CSAPP (剩余2实验)</h3><ul><li>Day 1-8: Malloc Lab (动态内存分配器)</li><li>Day 9-15: Proxy Lab (并发Web代理)</li><li>穿插并行，代码+报告</li></ul></div>
+            <div class="card"><h3>⚙️ MIT 6.S081</h3><ul><li>Day 16-50: lab util, syscall, pagetable, trap, cow, thread, net, lock, fs, mmap (共10个)</li><li>平均3天一个lab，配合xv6 book</li></ul></div>
+            <div class="card"><h3>🌐 CS144 计算机网络</h3><ul><li>Day 10-40: 实现TCP stack (sponge)</li><li>lab 0~6 完整通关，网络协议底层实践</li></ul></div>
+            <div class="card"><h3>🤖 CS231n + CS336</h3><ul><li>Day 51-70: 卷积神经网络，作业1~3，PyTorch项目</li><li>Day 71-85: LLM 课程大模型 (从Transformer到RLHF)</li></ul></div>
+            <div class="card"><h3>🏛️ Zurich 体系结构</h3><ul><li>周末穿插 (周六下午) : 流水线、缓存一致性、乱序执行</li><li>配合笔记完成quiz</li></ul></div>
+        </div>
+    </div>
+
+    <!-- 古琴《酒狂》特训 -->
+    <div class="section">
+        <div class="section-title"><span>🎶</span> 琴曲《酒狂》从零到登台</div>
+        <div class="highlight">
+            <p>🎯 <strong>分步走战略</strong>：阶段一 识谱&右手八法 → 阶段二 跪指特训 → 阶段三 分段精修 (姚丙炎版打谱) → 阶段四 全曲背谱 & 肢体韵律<br>
+            📍 每周至少3次录音回听，对比管平湖/成公亮名家版本；每天泛听20分钟培养“酒狂”特有的三拍子醉意。<br>
+            🎂 生日雅集彩蛋：9月16日在Corrour火车站或回来之后，为亲友录制《酒狂》弹奏视频，作为三十岁自由宣言。</p >
+        </div>
+    </div>
+
+    <!-- 雅思口语6.5+ 细化 -->
+    <div class="section">
+        <div class="section-title"><span>🎧</span> 雅思口语 · 6.5分攻坚手册</div>
+        <table class="table-stats">
+            <tr><th width="25%">阶段</th><th>核心动作</th><th>每日投入</th></tr>
+            <tr><td>Day 1-20</td><td>影子跟读《BBC 6 Minute English》，矫正发音，积累地搭配，Part1高频话题反复滚</td><td>30min</td></tr>
+            <tr><td>Day 21-50</td><td>构建5个万能故事覆盖人物/地点/经历/物品，录音+逐句打磨流利度，使用“总分总”框架</td><td>45min</td></tr>
+            <tr><td>Day 51-80</td><td>Part3深度观点库（教育、科技、环境），积累批判性连接词，实战模拟评分</td><td>45-60min</td></tr>
+            <tr><td>Day 81-100</td><td>每日全真模考（严格计时），考前心理建设，9月初报名UKVI雅思，目标6.5+</td><td>1h+模考</td></tr>
+        </table>
+        <p>💡 特别提醒：口语考试前务必熟悉当季题库，使用雅思哥APP，与语伴每周两次线上对练。</p >
+    </div>
+
+    <!-- 跑步：100km 奖励机制 -->
+    <div class="section">
+        <div class="section-title"><span>🏅</span> 百公里足迹 · 跑向高地</div>
+        <div class="card-grid">
+            <div class="card"><h3>📊 量化追踪</h3><ul><li>每周目标：至少8-10公里</li><li>推荐跑一休一，每次1.5~2.5公里</li><li>每周六 LSD 长距离 3-5公里累积里程</li><li>完成100km当天解锁“生日奖牌”虚拟勋章</li></ul></div>
+            <div class="card"><h3>🏴󠁧󠁢󠁳󠁣󠁴󠁿 最终仪式 · Corrour 车站</h3><ul><li>9月16日乘坐West Highland Line (格拉斯哥出发)，直达全英最偏远车站</li><li>经典猜火车场景：站台独自等待，旷野与山湖为背景</li><li>住宿可选 Station House 或 Loch Ossian YH</li><li>提前预订车票 & 餐馆，为30岁画上史诗句号</li></ul></div>
+        </div>
+    </div>
+
+    <!-- 特殊日冲刺清单 & 最后10天 -->
+    <div class="section">
+        <div class="section-title"><span>🎯</span> 生日前最后10天 · 巅峰行动</div>
+        <div class="daily-routine" style="background:#fff1e6;">
+            <ul style="list-style: square; margin-left: 1.2rem;">
+                <li><strong>Day 91-95:</strong> 完成所有CS实验最终测试，将代码上传GitHub，撰写学习笔记汇总</li>
+                <li><strong>Day 96-98:</strong> 雅思口语模考+最后查漏；古琴每日完整弹奏两遍《酒狂》，邀请朋友线上点评</li>
+                <li><strong>Day 99:</strong> 轻松跑3km，总计达成100km；打包旅行行李，确认火车票/住宿/签证</li>
+                <li><strong>🎂 第100天（9月16日）:</strong> 启程前往Corrour火车站！穿着最爱的衣服，模仿《猜火车》经典远眺镜头，庆祝30岁重生。当晚写下「三十岁·百日修行总结信」</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- JSON活动记录追踪 -->
+    <div class="section print-hide">
+        <div class="section-title"><span>📈</span> 活动记录 · 进度追踪</div>
+        <div class="tracker-panel">
+            <p><strong>这里会读取 <code>data/progress.json</code>。</strong> 你手动更新JSON并推送到GitHub后，GitHub Pages会显示最新记录。</p>
+            <p class="tracker-hint">每条记录使用5个字段：date、activity、duration、mood、notes。duration按分钟记录，方便自动统计。</p>
+        </div>
+
+        <div class="tracker-summary" id="trackerSummary">
+            <div class="empty-state">正在读取进度数据...</div>
+        </div>
+
+        <div class="tracker-panel">
+            <h3>活动分布</h3>
+            <div id="activityBreakdown" class="progress-list"></div>
+        </div>
+
+        <div class="tracker-panel">
+            <h3>最近记录</h3>
+            <div class="tracker-table-wrap">
+                <table class="tracker-table">
+                    <thead>
+                        <tr>
+                            <th>日期</th>
+                            <th>活动</th>
+                            <th>时长</th>
+                            <th>心情</th>
+                            <th>备注</th>
+                        </tr>
+                    </thead>
+                    <tbody id="progressLogBody">
+                        <tr><td colspan="5">正在读取进度数据...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- 清单式打卡表 -->
+    <div class="section">
+        <div class="section-title"><span>✅</span> 百日打卡追踪表（可自行勾选）</div>
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between;">
+            <div style="flex:1; min-width:200px;"><strong>📌 CS进度</strong><br>□ CSAPP 2 labs <br>□ MIT 6.S081全部 <br>□ CS144全栈 <br>□ CS231n作业 <br>□ CS336项目 <br>□ Zurich 笔记</div>
+            <div style="flex:1; min-width:200px;"><strong>🎵 古琴里程碑</strong><br>□ 基础指法过关 <br>□ 跪指稳定 <br>□ 全曲背谱 <br>□ 节奏滚奏自然 <br>□ 完整录制演奏</div>
+            <div style="flex:1; min-width:200px;"><strong>🏃‍♀️ 跑步100km</strong><br>□ 累计25km <br>□ 累计50km <br>□ 累计75km <br>□ 累计100km <br>□ Corrour 纪念跑</div>
+            <div style="flex:1; min-width:200px;"><strong>🎤 雅思口语</strong><br>□ 影子跟读30天 <br>□ Part2故事库10个 <br>□ Part3观点20+ <br>□ 正式考试6.5+ <br>□ 出分合影</div>
+        </div>
+    </div>
+
+    <!-- 平衡策略&鼓励 -->
+    <div class="highlight" style="background:#fef2e8;">
+        <p><strong>✨ 心理建设 & 灵活调整</strong><br>
+        • 如果某天因突发事情耽误，第二天不必追赶，按照每周总目标微调即可。<br>
+        • CS课程中重叠知识点 (例如OS与网络实验) 可同步加深理解，降低疲惫感。<br>
+        • 每完成一门课或跑步累积25公里，奖励自己一家喜欢的餐厅 / 新弦/ 半日徒步。<br>
+        • 联系一位学习伙伴 (打卡群)，互相鼓励，交流CS实验或雅思口语观点。<br>
+        • 30岁不是终点，而是丰盛的起点。这100天的每一刻，都将为未来积蓄巨大能量。</p >
+    </div>
+
+    <footer>
+        🧭 本计划始于 2026年6月9日，终于9月16日生日当天。愿你代码无bug，琴声有酒意，脚下有旷野，口语自信从容。<br>
+        📅 最后提醒：提前预订Corrour火车票与住宿，确认BRP及签证有效期。雅思报名尽早锁定考位！<br>
+        ⚡ “Choose life. Choose a job. Choose a career... But also choose a 100-day journey to become the sharpest, most vivid version of yourself.”<br>
+        —— 致敬《猜火车》& 三十岁的你
+    </footer>
+</div>
+<script>
+    (() => {
+        const els = {
+            summary: document.getElementById('trackerSummary'),
+            breakdown: document.getElementById('activityBreakdown'),
+            logBody: document.getElementById('progressLogBody')
+        };
+
+        function toNumber(value) {
+            const parsed = Number(value);
+            return Number.isFinite(parsed) ? parsed : 0;
+        }
+
+        function escapeHtml(value) {
+            return String(value ?? '').replace(/[&<>"']/g, (char) => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;'
+            }[char]));
+        }
+
+        function normalizeEntry(raw) {
+            return {
+                date: String(raw.date || raw.data || '').trim(),
+                activity: String(raw.activity || '').trim(),
+                duration: toNumber(raw.duration),
+                mood: String(raw.mood || '').trim(),
+                notes: String(raw.notes || '').trim()
+            };
+        }
+
+        function formatMinutes(minutes) {
+            minutes = Math.round(toNumber(minutes));
+            if (minutes < 60) return `${minutes} min`;
+            const hours = Math.floor(minutes / 60);
+            const rest = minutes % 60;
+            return rest ? `${hours}h ${rest}m` : `${hours}h`;
+        }
+
+        function renderSummary(entries, updatedAt) {
+            const totalMinutes = entries.reduce((sum, entry) => sum + entry.duration, 0);
+            const activeDays = new Set(entries.map((entry) => entry.date).filter(Boolean)).size;
+            const activities = new Set(entries.map((entry) => entry.activity).filter(Boolean)).size;
+            const latest = entries[0];
+            els.summary.innerHTML = `
+                <div class="metric-card">记录数<strong>${entries.length}</strong></div>
+                <div class="metric-card">活动类型<strong>${activities}</strong></div>
+                <div class="metric-card">累计投入<strong>${formatMinutes(totalMinutes)}</strong></div>
+                <div class="metric-card">打卡天数<strong>${activeDays}</strong></div>
+                <div class="metric-card">最近更新<strong>${escapeHtml(updatedAt || latest?.date || '-')}</strong></div>
+            `;
+        }
+
+        function renderBreakdown(entries) {
+            const totals = entries.reduce((map, entry) => {
+                const key = entry.activity || '未分类活动';
+                map[key] = (map[key] || 0) + entry.duration;
+                return map;
+            }, {});
+            const totalMinutes = Object.values(totals).reduce((sum, value) => sum + value, 0);
+
+            if (!entries.length) {
+                els.breakdown.innerHTML = '<div class="empty-state">还没有记录。更新 data/progress.json 后这里会显示活动分布。</div>';
+                return;
+            }
+
+            els.breakdown.innerHTML = Object.entries(totals)
+                .sort((a, b) => b[1] - a[1])
+                .map(([activity, minutes]) => {
+                    const percent = totalMinutes ? Math.round((minutes / totalMinutes) * 100) : 0;
+                    return `
+                    <div class="progress-row">
+                        <div class="progress-head">
+                            <span>${escapeHtml(activity)}</span>
+                            <span>${formatMinutes(minutes)} · ${percent}%</span>
+                        </div>
+                        <div class="progress-bar"><div class="progress-fill" style="width:${percent}%"></div></div>
+                    </div>
+                `;
+                }).join('');
+        }
+
+        function renderLogs(entries) {
+            if (!entries.length) {
+                els.logBody.innerHTML = '<tr><td colspan="5">还没有记录。请先编辑 data/progress.json。</td></tr>';
+                return;
+            }
+
+            els.logBody.innerHTML = entries.map((entry) => `
+                    <tr>
+                        <td>${escapeHtml(entry.date || '-')}</td>
+                        <td>${escapeHtml(entry.activity || '-')}</td>
+                        <td>${formatMinutes(entry.duration)}</td>
+                        <td>${escapeHtml(entry.mood || '-')}</td>
+                        <td>${escapeHtml(entry.notes || '')}</td>
+                    </tr>
+                `).join('');
+        }
+
+        async function loadProgress() {
+            try {
+                const response = await fetch(`./data/progress.json?v=${Date.now()}`);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const data = await response.json();
+                const entries = (Array.isArray(data) ? data : data.entries || [])
+                    .map(normalizeEntry)
+                    .filter((entry) => entry.date || entry.activity || entry.duration || entry.mood || entry.notes)
+                    .sort((a, b) => b.date.localeCompare(a.date));
+
+                renderSummary(entries, data.updated_at);
+                renderBreakdown(entries);
+                renderLogs(entries);
+            } catch (error) {
+                const message = `无法读取 data/progress.json：${escapeHtml(error.message)}`;
+                els.summary.innerHTML = `<div class="empty-state">${message}</div>`;
+                els.breakdown.innerHTML = '<div class="empty-state">请确认 data/progress.json 存在，并且JSON格式正确。</div>';
+                els.logBody.innerHTML = '<tr><td colspan="5">进度数据读取失败。</td></tr>';
+            }
+        }
+
+        loadProgress();
+    })();
+</script>
+</body>
+</html>
