@@ -570,7 +570,7 @@
         <div class="section-title"><span>📈</span> 活动记录 · 进度追踪</div>
         <div class="tracker-panel">
             <p><strong>这里会读取 <code>data/progress.json</code>。</strong> 你手动更新JSON并推送到GitHub后，GitHub Pages会显示最新记录。</p>
-            <p class="tracker-hint">每条记录使用5个字段：date、activity、duration、mood、notes、duration按分钟记录，方便自动统计。</p>
+            <p class="tracker-hint">每条记录使用5个字段：date、activity、duration、mood、notes。CS/古琴的duration按分钟记录；Running的duration按公里记录。</p>
         </div>
 
         <div class="tracker-summary" id="trackerSummary">
@@ -578,7 +578,7 @@
         </div>
 
         <div class="tracker-panel">
-            <h3>活动分布</h3>
+            <h3>目标进度</h3>
             <div id="activityBreakdown" class="progress-list"></div>
         </div>
 
@@ -590,7 +590,7 @@
                         <tr>
                             <th>日期</th>
                             <th>活动</th>
-                            <th>时长</th>
+                            <th>时长/距离</th>
                             <th>心情</th>
                             <th>备注</th>
                         </tr>
@@ -718,15 +718,69 @@
             return rest ? `${hours}h ${rest}m` : `${hours}h`;
         }
 
+        const activityGoals = [
+            {
+                name: 'CS study',
+                unit: 'time',
+                target: 500 * 60,
+                matches: (activity) => /^cs|cs study|计算机/i.test(activity)
+            },
+            {
+                name: 'Guqin practice',
+                unit: 'time',
+                target: 100 * 60,
+                matches: (activity) => /guqin|guqing|gupin|古琴/i.test(activity)
+            },
+            {
+                name: 'Running',
+                unit: 'distance',
+                target: 100,
+                matches: (activity) => /running|跑步/i.test(activity)
+            }
+        ];
+
+        function getActivityGoal(activity) {
+            return activityGoals.find((goal) => goal.matches(String(activity || '')));
+        }
+
+        function formatDistance(km) {
+            const value = toNumber(km);
+            return `${Number.isInteger(value) ? value : value.toFixed(1)} km`;
+        }
+
+        function formatActivityValue(activity, value) {
+            const goal = getActivityGoal(activity);
+            return goal?.unit === 'distance' ? formatDistance(value) : formatMinutes(value);
+        }
+
+        function formatGoalValue(goal) {
+            return goal.unit === 'distance' ? formatDistance(goal.target) : formatMinutes(goal.target);
+        }
+
+        function formatPercent(value, target) {
+            if (!target) return '0%';
+            const percent = (toNumber(value) / target) * 100;
+            if (percent > 0 && percent < 10) return `${percent.toFixed(1)}%`;
+            return `${Math.round(percent)}%`;
+        }
+
         function renderSummary(entries, updatedAt) {
-            const totalMinutes = entries.reduce((sum, entry) => sum + entry.duration, 0);
+            const totalMinutes = entries.reduce((sum, entry) => {
+                const goal = getActivityGoal(entry.activity);
+                return goal?.unit === 'distance' ? sum : sum + entry.duration;
+            }, 0);
+            const totalDistance = entries.reduce((sum, entry) => {
+                const goal = getActivityGoal(entry.activity);
+                return goal?.unit === 'distance' ? sum + entry.duration : sum;
+            }, 0);
             const activeDays = new Set(entries.map((entry) => entry.date).filter(Boolean)).size;
             const activities = new Set(entries.map((entry) => entry.activity).filter(Boolean)).size;
             const latest = entries[0];
             els.summary.innerHTML = `
                 <div class="metric-card">记录数<strong>${entries.length}</strong></div>
                 <div class="metric-card">活动类型<strong>${activities}</strong></div>
-                <div class="metric-card">累计投入<strong>${formatMinutes(totalMinutes)}</strong></div>
+                <div class="metric-card">学习/练习投入<strong>${formatMinutes(totalMinutes)}</strong></div>
+                <div class="metric-card">跑步累计<strong>${formatDistance(totalDistance)}</strong></div>
                 <div class="metric-card">打卡天数<strong>${activeDays}</strong></div>
                 <div class="metric-card">最近更新<strong>${escapeHtml(updatedAt || latest?.date || '-')}</strong></div>
             `;
@@ -738,24 +792,28 @@
                 map[key] = (map[key] || 0) + entry.duration;
                 return map;
             }, {});
-            const totalMinutes = Object.values(totals).reduce((sum, value) => sum + value, 0);
 
             if (!entries.length) {
-                els.breakdown.innerHTML = '<div class="empty-state">还没有记录。更新 data/progress.json 后这里会显示活动分布。</div>';
+                els.breakdown.innerHTML = '<div class="empty-state">还没有记录。更新 data/progress.json 后这里会显示目标进度。</div>';
                 return;
             }
 
             els.breakdown.innerHTML = Object.entries(totals)
                 .sort((a, b) => b[1] - a[1])
-                .map(([activity, minutes]) => {
-                    const percent = totalMinutes ? Math.round((minutes / totalMinutes) * 100) : 0;
+                .map(([activity, value]) => {
+                    const goal = getActivityGoal(activity);
+                    const percent = goal ? formatPercent(value, goal.target) : '未设置目标';
+                    const fillWidth = goal ? Math.min((value / goal.target) * 100, 100) : 0;
+                    const progressText = goal
+                        ? `${formatActivityValue(activity, value)} / ${formatGoalValue(goal)} · ${percent}`
+                        : `${formatActivityValue(activity, value)} · ${percent}`;
                     return `
                     <div class="progress-row">
                         <div class="progress-head">
                             <span>${escapeHtml(activity)}</span>
-                            <span>${formatMinutes(minutes)} · ${percent}%</span>
+                            <span>${progressText}</span>
                         </div>
-                        <div class="progress-bar"><div class="progress-fill" style="width:${percent}%"></div></div>
+                        <div class="progress-bar"><div class="progress-fill" style="width:${fillWidth}%"></div></div>
                     </div>
                 `;
                 }).join('');
@@ -771,7 +829,7 @@
                     <tr>
                         <td>${escapeHtml(entry.date || '-')}</td>
                         <td>${escapeHtml(entry.activity || '-')}</td>
-                        <td>${formatMinutes(entry.duration)}</td>
+                        <td>${formatActivityValue(entry.activity, entry.duration)}</td>
                         <td>${escapeHtml(entry.mood || '-')}</td>
                         <td>${escapeHtml(entry.notes || '')}</td>
                     </tr>
