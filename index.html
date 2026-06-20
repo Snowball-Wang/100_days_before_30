@@ -379,6 +379,73 @@
             line-height: 1.45;
             margin-top: 0.55rem;
         }
+        .checkin-panel {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 24px;
+            padding: 1.2rem;
+        }
+        .checkin-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .checkin-progress {
+            flex: 1;
+            min-width: 220px;
+        }
+        .checkin-progress strong {
+            display: block;
+            margin-bottom: 0.45rem;
+            color: #0f172a;
+        }
+        .checkin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 1rem;
+        }
+        .checkin-group {
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 1rem;
+        }
+        .checkin-group h3 {
+            font-size: 1rem;
+            color: #1e293b;
+            margin-bottom: 0.75rem;
+        }
+        .checkin-list {
+            display: grid;
+            gap: 0.55rem;
+        }
+        .checkin-item {
+            display: grid;
+            grid-template-columns: 22px 1fr;
+            align-items: start;
+            gap: 0.55rem;
+            color: #334155;
+            cursor: pointer;
+            line-height: 1.35;
+        }
+        .checkin-item input {
+            width: 18px;
+            height: 18px;
+            margin-top: 1px;
+            accent-color: #16a34a;
+            cursor: pointer;
+        }
+        .checkin-item span {
+            transition: color 0.15s, text-decoration-color 0.15s;
+        }
+        .checkin-item input:checked + span {
+            color: #64748b;
+            text-decoration: line-through;
+            text-decoration-color: #94a3b8;
+        }
         @media (max-width: 650px) {
             .tracker-actions {
                 align-items: stretch;
@@ -503,7 +570,7 @@
         <div class="section-title"><span>📈</span> 活动记录 · 进度追踪</div>
         <div class="tracker-panel">
             <p><strong>这里会读取 <code>data/progress.json</code>。</strong> 你手动更新JSON并推送到GitHub后，GitHub Pages会显示最新记录。</p>
-            <p class="tracker-hint">每条记录使用5个字段：date、activity、duration、mood、notes。duration按分钟记录，方便自动统计。</p>
+            <p class="tracker-hint">每条记录使用5个字段：date、activity、duration、mood、notes、duration按分钟记录，方便自动统计。</p>
         </div>
 
         <div class="tracker-summary" id="trackerSummary">
@@ -539,11 +606,57 @@
     <!-- 清单式打卡表 -->
     <div class="section">
         <div class="section-title"><span>✅</span> 百日打卡追踪表（可自行勾选）</div>
-        <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between;">
-            <div style="flex:1; min-width:200px;"><strong>📌 CS进度</strong><br>□ CSAPP 2 labs <br>□ MIT 6.S081全部 <br>□ CS144全栈 <br>□ CS231n作业 <br>□ CS336项目 <br>□ Zurich 笔记</div>
-            <div style="flex:1; min-width:200px;"><strong>🎵 古琴里程碑</strong><br>□ 基础指法过关 <br>□ 跪指稳定 <br>□ 全曲背谱 <br>□ 节奏滚奏自然 <br>□ 完整录制演奏</div>
-            <div style="flex:1; min-width:200px;"><strong>🏃‍♀️ 跑步100km</strong><br>□ 累计25km <br>□ 累计50km <br>□ 累计75km <br>□ 累计100km <br>□ Corrour 纪念跑</div>
-            <div style="flex:1; min-width:200px;"><strong>🎤 雅思口语</strong><br>□ 影子跟读30天 <br>□ Part2故事库10个 <br>□ Part3观点20+ <br>□ 正式考试6.5+ <br>□ 出分合影</div>
+        <div class="checkin-panel" id="checkinTracker">
+            <div class="checkin-toolbar">
+                <div class="checkin-progress">
+                    <strong id="checkinCount">已完成 0 / 21 项</strong>
+                    <div class="progress-bar" aria-hidden="true"><div class="progress-fill" id="checkinFill"></div></div>
+                </div>
+                <button class="button ghost" type="button" id="clearCheckins">清空勾选</button>
+            </div>
+            <div class="checkin-grid">
+                <div class="checkin-group">
+                    <h3>📌 CS进度</h3>
+                    <div class="checkin-list">
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="csapp-2-labs"><span>CSAPP 2 labs</span></label>
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="mit-6s081"><span>MIT 6.S081全部</span></label>
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="cs144-stack"><span>CS144全栈</span></label>
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="cs231n-assignments"><span>CS231n作业</span></label>
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="cs336-project"><span>CS336项目</span></label>
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="zurich-notes"><span>Zurich 笔记</span></label>
+                    </div>
+                </div>
+                <div class="checkin-group">
+                    <h3>🎵 古琴里程碑</h3>
+                    <div class="checkin-list">
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="guqin-basics"><span>基础指法过关</span></label>
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="guqin-kneeling-finger"><span>跪指稳定</span></label>
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="guqin-memorized"><span>全曲背谱</span></label>
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="guqin-rhythm"><span>节奏滚奏自然</span></label>
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="guqin-recording"><span>完整录制演奏</span></label>
+                    </div>
+                </div>
+                <div class="checkin-group">
+                    <h3>🏃‍♀️ 跑步100km</h3>
+                    <div class="checkin-list">
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="run-25km"><span>累计25km</span></label>
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="run-50km"><span>累计50km</span></label>
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="run-75km"><span>累计75km</span></label>
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="run-100km"><span>累计100km</span></label>
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="run-corrour"><span>Corrour 纪念跑</span></label>
+                    </div>
+                </div>
+                <div class="checkin-group">
+                    <h3>🎤 雅思口语</h3>
+                    <div class="checkin-list">
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="ielts-shadow-30"><span>影子跟读30天</span></label>
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="ielts-part2-stories"><span>Part2故事库10个</span></label>
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="ielts-part3-ideas"><span>Part3观点20+</span></label>
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="ielts-score-65"><span>正式考试6.5+</span></label>
+                        <label class="checkin-item"><input type="checkbox" data-checkin-id="ielts-result-photo"><span>出分合影</span></label>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -686,7 +799,62 @@
             }
         }
 
+        function initCheckinTracker() {
+            const tracker = document.getElementById('checkinTracker');
+            if (!tracker) return;
+
+            const storageKey = 'hundred-day-checkins';
+            const boxes = Array.from(tracker.querySelectorAll('[data-checkin-id]'));
+            const countEl = document.getElementById('checkinCount');
+            const fillEl = document.getElementById('checkinFill');
+            const clearButton = document.getElementById('clearCheckins');
+
+            function readSaved() {
+                try {
+                    return JSON.parse(localStorage.getItem(storageKey)) || {};
+                } catch {
+                    return {};
+                }
+            }
+
+            function save() {
+                const checked = boxes.reduce((state, box) => {
+                    state[box.dataset.checkinId] = box.checked;
+                    return state;
+                }, {});
+                localStorage.setItem(storageKey, JSON.stringify(checked));
+            }
+
+            function render() {
+                const done = boxes.filter((box) => box.checked).length;
+                const total = boxes.length;
+                const percent = total ? Math.round((done / total) * 100) : 0;
+                countEl.textContent = `已完成 ${done} / ${total} 项`;
+                fillEl.style.width = `${percent}%`;
+            }
+
+            const saved = readSaved();
+            boxes.forEach((box) => {
+                box.checked = Boolean(saved[box.dataset.checkinId]);
+                box.addEventListener('change', () => {
+                    save();
+                    render();
+                });
+            });
+
+            clearButton.addEventListener('click', () => {
+                boxes.forEach((box) => {
+                    box.checked = false;
+                });
+                save();
+                render();
+            });
+
+            render();
+        }
+
         loadProgress();
+        initCheckinTracker();
     })();
 </script>
 </body>

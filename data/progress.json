@@ -1,26 +1,19 @@
 {
-  "updated_at": "2026-06-19",
+  "updated_at": "2026-06-20",
   "entries": [
     {
-      "date": "2026-06-19",
-      "activity": "CS study",
-      "duration": 90,
-      "mood": "focused",
-      "notes": "Reviewed the plan and prepared the GitHub Pages tracker."
-    },
-    {
-      "date": "2026-06-19",
+      "date": "2026-06-12",
       "activity": "Running",
-      "duration": 20,
-      "mood": "steady",
-      "notes": "Easy short run to keep the 100 km target moving."
+      "duration": 18,
+      "mood": "tired",
+      "notes": "First run in the last three months."
     },
     {
-      "date": "2026-06-18",
-      "activity": "Guqin practice",
-      "duration": 40,
+      "date": "2026-06-13",
+      "activity": "Guqing practice",
+      "duration": 60,
       "mood": "calm",
-      "notes": "Practiced basic fingering and listened to Jiu Kuang."
+      "notes": "Practiced basic fingering like gou and tiao."
     }
   ]
 }
