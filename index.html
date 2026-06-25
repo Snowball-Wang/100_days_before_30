@@ -88,6 +88,41 @@
             font-size: 0.9rem;
             margin-top: 0.8rem;
         }
+        .birthday-progress {
+            max-width: 720px;
+            margin: 1.2rem auto 0;
+            background: #fff7ed;
+            border: 1px solid #fed7aa;
+            border-radius: 20px;
+            padding: 1rem;
+            text-align: left;
+        }
+        .birthday-progress-head {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.5rem;
+            font-weight: 800;
+            color: #9a3412;
+            margin-bottom: 0.65rem;
+        }
+        .birthday-progress-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.75rem;
+            margin-top: 0.8rem;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+        .birthday-progress-meta strong {
+            display: block;
+            color: #0f172a;
+            font-size: 1.2rem;
+            margin-top: 0.18rem;
+        }
+        .birthday-progress .progress-fill {
+            background: linear-gradient(90deg, #f97316, #ef4444);
+        }
 
         .section {
             margin: 2.5rem 0 1.8rem;
@@ -453,6 +488,9 @@
             .button {
                 width: 100%;
             }
+            .birthday-progress-meta {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -462,6 +500,20 @@
         <h1>🎂 三十而砺 · 百日修行</h1>
         <div class="sub">从2026年6月9日 → 9月16日 | 硬核CS · 琴心剑胆 · 步履不停</div>
         <div class="countdown-badge">🎯 生日终点站：苏格兰 Corrour 火车站 · 猜火车朝圣</div>
+        <div class="birthday-progress" aria-live="polite">
+            <div class="birthday-progress-head">
+                <span>生日倒计时进度</span>
+                <span id="birthdayProgressPercent">0%</span>
+            </div>
+            <div class="progress-bar" aria-label="生日倒计时进度条">
+                <div class="progress-fill" id="birthdayProgressFill"></div>
+            </div>
+            <div class="birthday-progress-meta">
+                <div>已走过<strong id="birthdayDaysPassed">0 天</strong></div>
+                <div>还剩<strong id="birthdayDaysLeft">100 天</strong></div>
+                <div>生日<strong>2026-09-16</strong></div>
+            </div>
+        </div>
     </div>
 
     <!-- 总体概览卡片 -->
@@ -679,6 +731,7 @@
 </div>
 <script>
     (() => {
+        const dayMs = 24 * 60 * 60 * 1000;
         const els = {
             summary: document.getElementById('trackerSummary'),
             breakdown: document.getElementById('activityBreakdown'),
@@ -762,6 +815,36 @@
             const percent = (toNumber(value) / target) * 100;
             if (percent > 0 && percent < 10) return `${percent.toFixed(1)}%`;
             return `${Math.round(percent)}%`;
+        }
+
+        function dateAtLocalNoon(year, monthIndex, day) {
+            return new Date(year, monthIndex, day, 12, 0, 0, 0);
+        }
+
+        function clamp(value, min, max) {
+            return Math.min(Math.max(value, min), max);
+        }
+
+        function initBirthdayProgress() {
+            const fillEl = document.getElementById('birthdayProgressFill');
+            const percentEl = document.getElementById('birthdayProgressPercent');
+            const passedEl = document.getElementById('birthdayDaysPassed');
+            const leftEl = document.getElementById('birthdayDaysLeft');
+            if (!fillEl || !percentEl || !passedEl || !leftEl) return;
+
+            const start = dateAtLocalNoon(2026, 5, 9);
+            const birthday = dateAtLocalNoon(2026, 8, 16);
+            const now = new Date();
+            const today = dateAtLocalNoon(now.getFullYear(), now.getMonth(), now.getDate());
+            const totalDays = Math.round((birthday - start) / dayMs) + 1;
+            const daysPassed = clamp(Math.floor((today - start) / dayMs) + 1, 0, totalDays);
+            const daysLeft = clamp(Math.ceil((birthday - today) / dayMs), 0, totalDays);
+            const percent = totalDays ? Math.round((daysPassed / totalDays) * 100) : 0;
+
+            fillEl.style.width = `${percent}%`;
+            percentEl.textContent = `${percent}%`;
+            passedEl.textContent = `${daysPassed} 天`;
+            leftEl.textContent = daysLeft ? `${daysLeft} 天` : '今天';
         }
 
         function renderSummary(entries, updatedAt) {
@@ -912,6 +995,7 @@
         }
 
         loadProgress();
+        initBirthdayProgress();
         initCheckinTracker();
     })();
 </script>
