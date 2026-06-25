@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, print-scale: 1.0">
-    <title>三十而砺 · 百日修行 | 30岁倒计时100天全能计划</title>
+    <title>三十而砺 · 百日仪表盘 | 30岁前的可持续生活系统</title>
     <style>
         * {
             margin: 0;
@@ -216,6 +216,77 @@
             border-radius: 20px;
             text-align: center;
             box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        .dashboard-panel {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 18px;
+            padding: 1rem;
+        }
+        .dashboard-panel h3 {
+            color: #0f172a;
+            font-size: 1.05rem;
+            margin-bottom: 0.65rem;
+        }
+        .dashboard-panel ul {
+            padding-left: 1.1rem;
+            color: #334155;
+            line-height: 1.5;
+        }
+        .dashboard-panel li {
+            margin: 0.45rem 0;
+        }
+        .dashboard-panel strong {
+            color: #0f172a;
+        }
+        .mode-list {
+            display: grid;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+        .mode-row {
+            display: grid;
+            grid-template-columns: 110px 1fr;
+            gap: 1rem;
+            align-items: start;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 0.9rem;
+        }
+        .mode-label {
+            font-weight: 800;
+            color: #0f766e;
+        }
+        .mode-row p {
+            color: #334155;
+            line-height: 1.45;
+        }
+        .principle-strip {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: 0.8rem;
+            margin: 1rem 0;
+        }
+        .principle-item {
+            background: #fff;
+            border: 1px solid #dbeafe;
+            border-left: 5px solid #2563eb;
+            border-radius: 16px;
+            padding: 0.9rem;
+            color: #334155;
+            line-height: 1.45;
+        }
+        .principle-item strong {
+            display: block;
+            color: #1e3a8a;
+            margin-bottom: 0.25rem;
         }
 
         .highlight {
@@ -491,6 +562,10 @@
             .birthday-progress-meta {
                 grid-template-columns: 1fr;
             }
+            .mode-row {
+                grid-template-columns: 1fr;
+                gap: 0.35rem;
+            }
         }
     </style>
 </head>
@@ -498,7 +573,7 @@
 <div class="container">
     <div class="hero">
         <h1>🎂 三十而砺 · 百日修行</h1>
-        <div class="sub">从2026年6月9日 → 9月16日 | 硬核CS · 琴心剑胆 · 步履不停</div>
+        <div class="sub">从2026年6月9日 → 9月16日 | 工作之外，稳稳生活，慢慢变强</div>
         <div class="countdown-badge">🎯 生日终点站：苏格兰 Corrour 火车站 · 猜火车朝圣</div>
         <div class="birthday-progress" aria-live="polite">
             <div class="birthday-progress-head">
@@ -519,101 +594,116 @@
     <!-- 总体概览卡片 -->
     <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px,1fr));">
         <div class="card"><h3>📚 CS 六脉神剑</h3><ul><li>CSAPP (剩余2实验)</li><li>MIT 6.S081</li><li>CS144 计算机网络</li><li>CS231n 视觉</li><li>CS336 LLM</li><li>Zurich 体系结构</li></ul></div>
-        <div class="card"><h3>🎵 古琴 · 酒狂</h3><ul><li>从零基础 → 完整弹出《酒狂》</li><li>每天30-45分钟沉浸练习</li><li>运用跪指/醉态节奏</li></ul></div>
-        <div class="card"><h3>🏃 百公里计划</h3><ul><li>100天累计跑100公里</li><li>日均1公里，每周5-6天</li><li>晨跑/傍晚放松跑</li></ul></div>
-        <div class="card"><h3>🎙️ 雅思口语6.5+</h3><ul><li>分阶段攻破Part1-3</li><li>影子跟读+录音复盘</li><li>第90-100天正式考试</li></ul></div>
+        <div class="card"><h3>🎵 古琴 · 酒狂</h3><ul><li>从零基础 → 完整弹出《酒狂》</li><li>低电量日也可以只练10分钟</li><li>运用跪指/醉态节奏</li></ul></div>
+        <div class="card"><h3>🏃 百公里计划</h3><ul><li>100天累计跑100公里</li><li>跑步服务精力和睡眠</li><li>跑、走、拉伸都算照顾身体</li></ul></div>
+        <div class="card"><h3>🎙️ 雅思口语6.5+</h3><ul><li>分阶段攻破Part1-3</li><li>短录音+复盘，保持语感</li><li>考前再进入模拟强度</li></ul></div>
     </div>
 
-    <!-- 宏观日程 + 阶段路线 -->
+    <!-- 每日仪表盘 -->
     <div class="section">
-        <div class="section-title"><span>🗓️</span> 百日里程碑 · 四阶递进</div>
-        <div class="phase-timeline">
-            <div class="phase-item"><div class="phase-title">第一阶段 · 晨曦筑基 (Day 1–20)</div><div class="phase-days">6月9日 - 6月28日</div><ul><li><strong>CS:</strong> CSAPP 剩余两个实验 (Malloc/Proxy) 攻坚完成；CS144 前3个实验 (TCP初探)</li><li><strong>古琴:</strong> 识谱+左右手基础指法，开指小曲《仙翁操》</li><li><strong>口语:</strong> 影子跟读BBC，Part1流利度训练，纠音打卡</li><li><strong>跑步:</strong> 累计18~20公里 (适应每日1公里+周末加量)</li></ul></div>
-            <div class="phase-item"><div class="phase-title">第二阶段 · 风暴崛起 (Day 21–50)</div><div class="phase-days">6月29日 - 7月28日</div><ul><li><strong>CS:</strong> MIT 6.S081 完成全部10个实验 (OS核心)，CS144 剩余实验收尾</li><li><strong>古琴:</strong> 攻克跪指难点，开始《酒狂》第一、二段旋律</li><li><strong>口语:</strong> 构建Part2万能故事库，录音回放自评，逻辑连接词训练</li><li><strong>跑步:</strong> 累计至45~50公里，持续有氧耐力</li></ul></div>
-            <div class="phase-item"><div class="phase-title">第三阶段 · 双峰并进 (Day 51–80)</div><div class="phase-days">7月29日 - 8月27日</div><ul><li><strong>CS:</strong> CS231n 全部作业 + CS336 (LLM) 课程与最终项目， Zurich体系结构周末推进</li><li><strong>古琴:</strong> 完整串弹《酒狂》全曲，稳定节奏 + 强弱处理</li><li><strong>口语:</strong> 主攻 Part3 辩证观点，全真模拟套题，雅思考位确认 (8月底或9月初)</li><li><strong>跑步:</strong> 累计达到80公里，冲刺最后里程</li></ul></div>
-            <div class="phase-item"><div class="phase-title">第四阶段 · 淬火冲刺 (Day 81–100)</div><div class="phase-days">8月28日 - 9月16日</div><ul><li><strong>CS:</strong> 查漏补缺，综合项目demo，整理代码仓库为30岁献礼</li><li><strong>古琴:</strong> 每日完整演奏2-3遍《酒狂》，录制演奏视频留念</li><li><strong>雅思口语:</strong> 正式考试 (建议第92-96天)，维持语感，轻松心态</li><li><strong>跑步:</strong> 完成100公里里程碑，生日当天站上Corrour前庆祝</li></ul></div>
+        <div class="section-title"><span>🧭</span> 今日仪表盘 · 先过好一天</div>
+        <div class="dashboard-grid">
+            <div class="dashboard-panel">
+                <h3>今日只选 1-3 件事</h3>
+                <ul>
+                    <li><strong>身体:</strong> 跑步、散步、拉伸，任选一个。</li>
+                    <li><strong>深度:</strong> CS、雅思、古琴，只选当天最重要的一项。</li>
+                    <li><strong>收尾:</strong> 写一条记录，哪怕只有一句话。</li>
+                </ul>
+            </div>
+            <div class="dashboard-panel">
+                <h3>上班日规则</h3>
+                <ul>
+                    <li>工作已经消耗了主要脑力，晚上不补偿式硬撑。</li>
+                    <li>30分钟有效推进，优先于3小时完美计划。</li>
+                    <li>连续疲惫两天时，把目标降到维护状态。</li>
+                </ul>
+            </div>
+            <div class="dashboard-panel">
+                <h3>今天的判断</h3>
+                <ul>
+                    <li>睡眠不足：只做身体恢复和最小打卡。</li>
+                    <li>状态普通：完成一个主线动作即可。</li>
+                    <li>状态很好：再加一个副线动作，不透支明天。</li>
+                </ul>
+            </div>
+        </div>
+        <div class="mode-list">
+            <div class="mode-row">
+                <div class="mode-label">低电量日</div>
+                <p>10分钟散步或拉伸 + 5分钟复盘。今天的目标是不断线，不是证明意志力。</p>
+            </div>
+            <div class="mode-row">
+                <div class="mode-label">普通上班日</div>
+                <p>一个30-60分钟主线块：CS实验、古琴练习、雅思口语或轻松跑。做完就收工。</p>
+            </div>
+            <div class="mode-row">
+                <div class="mode-label">高能量日</div>
+                <p>一个主线块 + 一个短副线块。仍然保留睡眠、晚饭和放空时间。</p>
+            </div>
         </div>
     </div>
 
-    <!-- 详细周作息 & 每日融合 -->
+    <!-- 生活系统 -->
     <div class="section">
-        <div class="section-title"><span>⏳</span> 典型一周 · 多线程优雅融合</div>
-        <div class="daily-routine">
-            <p style="font-weight:700; margin-bottom:10px;">✨ 每日时间分配建议 (总耗时 ≈ 5-5.5小时)</p >
-            <ul style="list-style-type: none;">
-                <li>🌅 早晨 07:30-07:50 &nbsp; <strong>跑步1~2公里</strong> (唤醒身体，10-15分钟)</li>
-                <li>☕ 上午 09:00-12:30 &nbsp; <strong>CS核心攻坚</strong> (6.S081 / CS144实验 / CS231n代码，3-3.5h)</li>
-                <li>🍃 午休/间隙 &nbsp; 雅思口语泛听+影子跟读 15分钟</li>
-                <li>🌙 晚间 19:30-20:15 &nbsp; <strong>古琴沉浸</strong> (40分钟，心流切换)</li>
-                <li>📖 睡前 21:00-21:45 &nbsp; <strong>雅思口语专项训练</strong> (45分钟，Part2/3)</li>
-                <li>周末整块时间：周六加练CS实验+古琴长课时；周日复盘+模拟口语模考+跑量增加</li>
-            </ul>
+        <div class="section-title"><span>🌿</span> 可持续生活系统</div>
+        <div class="principle-strip">
+            <div class="principle-item"><strong>睡眠是地基</strong>熬夜换来的进度，第二天通常会加倍偿还。</div>
+            <div class="principle-item"><strong>运动是维护</strong>跑步目标服务于精力，不反过来制造压力。</div>
+            <div class="principle-item"><strong>学习要留余量</strong>全职工程工作之后，稳定小步比密集冲刺更可靠。</div>
+            <div class="principle-item"><strong>记录不要审判</strong>记录事实、情绪和下一步，不给自己写判决书。</div>
         </div>
-        <div class="week-schedule">
-            <div class="day-card"><strong>周一</strong><br>CS 3h + 口语45' + 跑1.5km</div>
-            <div class="day-card"><strong>周二</strong><br>CS 3h + 古琴40' + 跑1.5km</div>
-            <div class="day-card"><strong>周三</strong><br>CS 3h + 口语45' + 跑休/拉伸</div>
-            <div class="day-card"><strong>周四</strong><br>CS 3h + 古琴40' + 跑2km</div>
-            <div class="day-card"><strong>周五</strong><br>CS 3h + 口语模拟题+跑1km</div>
-            <div class="day-card"><strong>周六</strong><br>CS 5h + 古琴1.5h + 跑3~4km</div>
-            <div class="day-card"><strong>周日</strong><br>复盘周计划 + 口语模考 + 跑2km/瑜伽</div>
-        </div>
-    </div>
-
-    <!-- CS 课程更细颗粒 -->
-    <div class="section">
-        <div class="section-title"><span>💻</span> 硬核CS · 100天攻克路线图</div>
-        <div class="card-grid">
-            <div class="card"><h3>🔧 CSAPP (剩余2实验)</h3><ul><li>Day 1-8: Malloc Lab (动态内存分配器)</li><li>Day 9-15: Proxy Lab (并发Web代理)</li><li>穿插并行，代码+报告</li></ul></div>
-            <div class="card"><h3>⚙️ MIT 6.S081</h3><ul><li>Day 16-50: lab util, syscall, pagetable, trap, cow, thread, net, lock, fs, mmap (共10个)</li><li>平均3天一个lab，配合xv6 book</li></ul></div>
-            <div class="card"><h3>🌐 CS144 计算机网络</h3><ul><li>Day 10-40: 实现TCP stack (sponge)</li><li>lab 0~6 完整通关，网络协议底层实践</li></ul></div>
-            <div class="card"><h3>🤖 CS231n + CS336</h3><ul><li>Day 51-70: 卷积神经网络，作业1~3，PyTorch项目</li><li>Day 71-85: LLM 课程大模型 (从Transformer到RLHF)</li></ul></div>
-            <div class="card"><h3>🏛️ Zurich 体系结构</h3><ul><li>周末穿插 (周六下午) : 流水线、缓存一致性、乱序执行</li><li>配合笔记完成quiz</li></ul></div>
-        </div>
-    </div>
-
-    <!-- 古琴《酒狂》特训 -->
-    <div class="section">
-        <div class="section-title"><span>🎶</span> 琴曲《酒狂》从零到登台</div>
         <div class="highlight">
-            <p>🎯 <strong>分步走战略</strong>：阶段一 识谱&右手八法 → 阶段二 跪指特训 → 阶段三 分段精修 (姚丙炎版打谱) → 阶段四 全曲背谱 & 肢体韵律<br>
-            📍 每周至少3次录音回听，对比管平湖/成公亮名家版本；每天泛听20分钟培养“酒狂”特有的三拍子醉意。<br>
-            🎂 生日雅集彩蛋：9月16日在Corrour火车站或回来之后，为亲友录制《酒狂》弹奏视频，作为三十岁自由宣言。</p >
+            <p><strong>每日底线：</strong>哪怕今天只完成一次散步、一次古琴拨弦、一道CS小题、一次口语录音或一条日志，也算这100天仍在继续。这个网站不是考勤表，而是帮你把生活拉回可持续轨道的仪表盘。</p>
         </div>
     </div>
 
-    <!-- 雅思口语6.5+ 细化 -->
+    <!-- 百日指南针 -->
     <div class="section">
-        <div class="section-title"><span>🎧</span> 雅思口语 · 6.5分攻坚手册</div>
-        <table class="table-stats">
-            <tr><th width="25%">阶段</th><th>核心动作</th><th>每日投入</th></tr>
-            <tr><td>Day 1-20</td><td>影子跟读《BBC 6 Minute English》，矫正发音，积累地搭配，Part1高频话题反复滚</td><td>30min</td></tr>
-            <tr><td>Day 21-50</td><td>构建5个万能故事覆盖人物/地点/经历/物品，录音+逐句打磨流利度，使用“总分总”框架</td><td>45min</td></tr>
-            <tr><td>Day 51-80</td><td>Part3深度观点库（教育、科技、环境），积累批判性连接词，实战模拟评分</td><td>45-60min</td></tr>
-            <tr><td>Day 81-100</td><td>每日全真模考（严格计时），考前心理建设，9月初报名UKVI雅思，目标6.5+</td><td>1h+模考</td></tr>
-        </table>
-        <p>💡 特别提醒：口语考试前务必熟悉当季题库，使用雅思哥APP，与语伴每周两次线上对练。</p >
-    </div>
-
-    <!-- 跑步：100km 奖励机制 -->
-    <div class="section">
-        <div class="section-title"><span>🏅</span> 百公里足迹 · 跑向高地</div>
-        <div class="card-grid">
-            <div class="card"><h3>📊 量化追踪</h3><ul><li>每周目标：至少8-10公里</li><li>推荐跑一休一，每次1.5~2.5公里</li><li>每周六 LSD 长距离 3-5公里累积里程</li><li>完成100km当天解锁“生日奖牌”虚拟勋章</li></ul></div>
-            <div class="card"><h3>🏴󠁧󠁢󠁳󠁣󠁴󠁿 最终仪式 · Corrour 车站</h3><ul><li>9月16日乘坐West Highland Line (格拉斯哥出发)，直达全英最偏远车站</li><li>经典猜火车场景：站台独自等待，旷野与山湖为背景</li><li>住宿可选 Station House 或 Loch Ossian YH</li><li>提前预订车票 & 餐馆，为30岁画上史诗句号</li></ul></div>
+        <div class="section-title"><span>🗓️</span> 百日指南针 · 不做硬性课表</div>
+        <div class="phase-timeline">
+            <div class="phase-item"><div class="phase-title">现在到第30天 · 找到可执行节奏</div><div class="phase-days">重点是稳定，不是堆任务量</div><ul><li>确认哪些动作适合上班日，哪些适合周末。</li><li>把CS、古琴、跑步、口语都压缩成可在低能量日完成的最小版本。</li></ul></div>
+            <div class="phase-item"><div class="phase-title">第31-70天 · 建立主线推进</div><div class="phase-days">每周只问：本周最值得推进的一件事是什么？</div><ul><li>CS保持一个清晰主线，避免同时打开太多课程。</li><li>古琴、跑步、口语以维护节奏为主，状态好时再加量。</li></ul></div>
+            <div class="phase-item"><div class="phase-title">第71-100天 · 收束与庆祝</div><div class="phase-days">减少新坑，完成值得留下来的成果</div><ul><li>整理能展示真实成长的笔记、代码、录音和跑步记录。</li><li>为生日旅行和Corrour仪式留出恢复、准备和期待的空间。</li></ul></div>
         </div>
     </div>
 
-    <!-- 特殊日冲刺清单 & 最后10天 -->
+    <!-- 目标使用方式 -->
     <div class="section">
-        <div class="section-title"><span>🎯</span> 生日前最后10天 · 巅峰行动</div>
-        <div class="daily-routine" style="background:#fff1e6;">
-            <ul style="list-style: square; margin-left: 1.2rem;">
-                <li><strong>Day 91-95:</strong> 完成所有CS实验最终测试，将代码上传GitHub，撰写学习笔记汇总</li>
-                <li><strong>Day 96-98:</strong> 雅思口语模考+最后查漏；古琴每日完整弹奏两遍《酒狂》，邀请朋友线上点评</li>
-                <li><strong>Day 99:</strong> 轻松跑3km，总计达成100km；打包旅行行李，确认火车票/住宿/签证</li>
-                <li><strong>🎂 第100天（9月16日）:</strong> 启程前往Corrour火车站！穿着最爱的衣服，模仿《猜火车》经典远眺镜头，庆祝30岁重生。当晚写下「三十岁·百日修行总结信」</li>
-            </ul>
+        <div class="section-title"><span>🎯</span> 四条主线 · 灵活推进</div>
+        <div class="dashboard-grid">
+            <div class="dashboard-panel">
+                <h3>CS</h3>
+                <ul>
+                    <li>主目标：持续补强底层系统、网络、视觉和LLM能力。</li>
+                    <li>上班日版本：读一小节、修一个测试、写一段笔记。</li>
+                    <li>周末版本：集中处理实验或项目。</li>
+                </ul>
+            </div>
+            <div class="dashboard-panel">
+                <h3>古琴</h3>
+                <ul>
+                    <li>主目标：《酒狂》从熟悉旋律到能完整表达。</li>
+                    <li>上班日版本：10-20分钟指法或单句慢练。</li>
+                    <li>周末版本：录音回听，修节奏和气口。</li>
+                </ul>
+            </div>
+            <div class="dashboard-panel">
+                <h3>跑步</h3>
+                <ul>
+                    <li>主目标：100天累计100公里，但服从身体反馈。</li>
+                    <li>上班日版本：轻松跑、快走或拉伸都有效。</li>
+                    <li>周末版本：补一点距离，但不报复性加量。</li>
+                </ul>
+            </div>
+            <div class="dashboard-panel">
+                <h3>雅思口语</h3>
+                <ul>
+                    <li>主目标：把表达变得自然、清楚、能展开。</li>
+                    <li>上班日版本：5分钟录音或影子跟读。</li>
+                    <li>周末版本：一次完整Part 2/3模拟和复盘。</li>
+                </ul>
+            </div>
         </div>
     </div>
 
@@ -657,7 +747,7 @@
 
     <!-- 清单式打卡表 -->
     <div class="section">
-        <div class="section-title"><span>✅</span> 百日打卡追踪表（可自行勾选）</div>
+        <div class="section-title"><span>✅</span> 里程碑追踪表（可自行勾选）</div>
         <div class="checkin-panel" id="checkinTracker">
             <div class="checkin-toolbar">
                 <div class="checkin-progress">
@@ -715,16 +805,16 @@
     <!-- 平衡策略&鼓励 -->
     <div class="highlight" style="background:#fef2e8;">
         <p><strong>✨ 心理建设 & 灵活调整</strong><br>
-        • 如果某天因突发事情耽误，第二天不必追赶，按照每周总目标微调即可。<br>
-        • CS课程中重叠知识点 (例如OS与网络实验) 可同步加深理解，降低疲惫感。<br>
-        • 每完成一门课或跑步累积25公里，奖励自己一家喜欢的餐厅 / 新弦/ 半日徒步。<br>
-        • 联系一位学习伙伴 (打卡群)，互相鼓励，交流CS实验或雅思口语观点。<br>
-        • 30岁不是终点，而是丰盛的起点。这100天的每一刻，都将为未来积蓄巨大能量。</p >
+        • 如果某天被工作、通勤、情绪或生活打断，第二天从最小动作重新开始。<br>
+        • CS、古琴、跑步、口语都可以轮换成为主线，不需要每天同时推进。<br>
+        • 每完成一个里程碑，奖励自己一家喜欢的餐厅 / 新弦 / 半日徒步。<br>
+        • 联系一位学习伙伴或朋友，偶尔同步近况，而不是独自憋到耗尽。<br>
+        • 30岁不是终点。这100天的重点不是榨干自己，而是建立可以继续活下去的节奏。</p >
     </div>
 
     <footer>
-        🧭 本计划始于 2026年6月9日，终于9月16日生日当天。愿你代码无bug，琴声有酒意，脚下有旷野，口语自信从容。<br>
-        📅 最后提醒：提前预订Corrour火车票与住宿，确认BRP及签证有效期。雅思报名尽早锁定考位！<br>
+        🧭 这个仪表盘始于 2026年6月9日，终于9月16日生日当天。愿你代码清醒，琴声有酒意，脚下有旷野，表达自信从容。<br>
+        📅 温和提醒：提前预订Corrour火车票与住宿，确认BRP及签证有效期。雅思报名按真实状态锁定考位。<br>
         ⚡ “Choose life. Choose a job. Choose a career... But also choose a 100-day journey to become the sharpest, most vivid version of yourself.”<br>
         —— 致敬《猜火车》& 三十岁的你
     </footer>
