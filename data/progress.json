@@ -14,6 +14,20 @@
       "duration": 60,
       "mood": "calm",
       "notes": "Practiced basic fingering like gou and tiao."
+    },
+    {
+      "date": "2026-06-23",
+      "activity": "Guqing practice",
+      "duration": 30,
+      "mood": "calm",
+      "notes": "Continued the basic fingering practice."
+    },
+    {
+      "date": "2026-06-24",
+      "activity": "Guqing practice",
+      "duration": 30,
+      "mood": "calm",
+      "notes": "Started to practice mo."
     }
   ]
 }
