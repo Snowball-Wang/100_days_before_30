@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-25",
+  "updated_at": "2026-06-26",
   "entries": [
     {
       "date": "2026-06-12",
@@ -28,6 +28,13 @@
       "duration": 30,
       "mood": "calm",
       "notes": "Started to practice mo."
+    },
+    {
+      "date": "2026-06-25",
+      "activity": "Guqing practice",
+      "duration": 30,
+      "mood": "calm",
+      "notes": "Tried the fingering ti."
     }
   ]
 }
