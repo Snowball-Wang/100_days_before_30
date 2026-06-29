@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-26",
+  "updated_at": "2026-06-29",
   "entries": [
     {
       "date": "2026-06-12",
@@ -35,6 +35,20 @@
       "duration": 30,
       "mood": "calm",
       "notes": "Tried the fingering ti."
+    },
+    {
+      "date": "2026-06-28",
+      "activity": "Guqing practice",
+      "duration": 180,
+      "mood": "calm",
+      "notes": "Mastered four basic fingering. Learned to play A Laugh in the Vast Sea"
+    },
+    {
+      "date": "2026-06-27",
+      "activity": "Running",
+      "duration": 4.0,
+      "mood": "calm",
+      "notes": "Saturday running."
     }
   ]
 }
