@@ -41,7 +41,7 @@
       "activity": "Guqing practice",
       "duration": 180,
       "mood": "calm",
-      "notes": "Mastered four basic fingering. Learned to play A Laugh in the Vast Sea"
+      "notes": "Mastered four basic fingering. Learned to play A Laugh in the Vast Sea."
     },
     {
       "date": "2026-06-27",
@@ -49,6 +49,14 @@
       "duration": 4.0,
       "mood": "calm",
       "notes": "Saturday running."
+    },
+    {
+      "date": "2026-06-29",
+      "activity": "Guqing practice",
+      "duration": 30,
+      "mood": "calm",
+      "notes": "Continued the practice of A Laugh in the Vast Sea."
     }
+
   ]
 }
