@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-06-29",
+  "updated_at": "2026-06-30",
   "entries": [
     {
       "date": "2026-06-12",
@@ -56,7 +56,13 @@
       "duration": 30,
       "mood": "calm",
       "notes": "Continued the practice of A Laugh in the Vast Sea."
+    },
+    {
+      "date": "2026-06-30",
+      "activity": "Guqing practice",
+      "duration": 60,
+      "mood": "calm",
+      "notes": "Tried the fingering tuo and pi."
     }
-
   ]
 }
