@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-09",
+  "updated_at": "2026-07-13",
   "entries": [
     {
       "date": "2026-06-12",
@@ -84,6 +84,20 @@
       "duration": 120,
       "mood": "calm",
       "notes": "Learn how to play fan yin."
+    },
+    {
+      "date": "2026-07-12",
+      "activity": "Guqing practice",
+      "duration": 90,
+      "mood": "calm",
+      "notes": "Learn how to play an yin."
+    },
+    {
+      "date": "2026-07-12",
+      "activity": "CS study",
+      "duration": 60,
+      "mood": "focused",
+      "notes": "Revised MIT 6.S081 Lecture 1 video."
     }
   ]
 }
