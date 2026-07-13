@@ -998,7 +998,7 @@
                 return;
             }
 
-            els.logBody.innerHTML = entries.map((entry) => `
+            els.logBody.innerHTML = entries.slice(0, 10).map((entry) => `
                     <tr>
                         <td>${escapeHtml(entry.date || '-')}</td>
                         <td>${escapeHtml(entry.activity || '-')}</td>
