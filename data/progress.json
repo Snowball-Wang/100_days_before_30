@@ -98,6 +98,13 @@
       "duration": 60,
       "mood": "focused",
       "notes": "Revised MIT 6.S081 Lecture 1 video."
+    },
+    {
+      "date": "2026-07-13",
+      "activity": "English Learning",
+      "duration": 60,
+      "mood": "chilled",
+      "notes": "1h speaking session with ChatGPT live."
     }
   ]
 }
