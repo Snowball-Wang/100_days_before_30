@@ -3,7 +3,7 @@
   "entries": [
     {
       "date": "2026-06-12",
-      "activity": "Running",
+      "activity": "Exercise",
       "duration": 2.8,
       "mood": "tired",
       "notes": "First run in the last three months."
@@ -45,7 +45,7 @@
     },
     {
       "date": "2026-06-27",
-      "activity": "Running",
+      "activity": "Exercise",
       "duration": 4.0,
       "mood": "calm",
       "notes": "Saturday running."
