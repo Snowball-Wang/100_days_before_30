@@ -10,35 +10,35 @@
     },
     {
       "date": "2026-06-13",
-      "activity": "Guqing practice",
+      "activity": "Guqin practice",
       "duration": 60,
       "mood": "calm",
       "notes": "Practiced basic fingering like gou and tiao."
     },
     {
       "date": "2026-06-23",
-      "activity": "Guqing practice",
+      "activity": "Guqin practice",
       "duration": 30,
       "mood": "calm",
       "notes": "Continued the basic fingering practice."
     },
     {
       "date": "2026-06-24",
-      "activity": "Guqing practice",
+      "activity": "Guqin practice",
       "duration": 30,
       "mood": "calm",
       "notes": "Started to practice mo."
     },
     {
       "date": "2026-06-25",
-      "activity": "Guqing practice",
+      "activity": "Guqin practice",
       "duration": 30,
       "mood": "calm",
       "notes": "Tried the fingering ti."
     },
     {
       "date": "2026-06-28",
-      "activity": "Guqing practice",
+      "activity": "Guqin practice",
       "duration": 180,
       "mood": "calm",
       "notes": "Mastered four basic fingering. Learned to play A Laugh in the Vast Sea."
@@ -52,42 +52,42 @@
     },
     {
       "date": "2026-06-29",
-      "activity": "Guqing practice",
+      "activity": "Guqin practice",
       "duration": 30,
       "mood": "calm",
       "notes": "Continued the practice of A Laugh in the Vast Sea."
     },
     {
       "date": "2026-06-30",
-      "activity": "Guqing practice",
+      "activity": "Guqin practice",
       "duration": 60,
       "mood": "calm",
       "notes": "Tried the fingering tuo and pi."
     },
     {
       "date": "2026-07-04",
-      "activity": "Guqing practice",
+      "activity": "Guqin practice",
       "duration": 90,
       "mood": "calm",
       "notes": "Guqing course at Netherhall school."
     },
     {
       "date": "2026-07-07",
-      "activity": "Guqing practice",
+      "activity": "Guqin practice",
       "duration": 30,
       "mood": "calm",
       "notes": "Practiced right-hand eight fingering."
     },
     {
       "date": "2026-07-09",
-      "activity": "Guqing practice",
+      "activity": "Guqin practice",
       "duration": 120,
       "mood": "calm",
       "notes": "Learn how to play fan yin."
     },
     {
       "date": "2026-07-12",
-      "activity": "Guqing practice",
+      "activity": "Guqin practice",
       "duration": 90,
       "mood": "calm",
       "notes": "Learn how to play an yin."
@@ -108,7 +108,7 @@
     },
     {
       "date": "2026-07-14",
-      "activity": "Guqing practice",
+      "activity": "Guqin practice",
       "duration": 60,
       "mood": "calm",
       "notes": "Practiced basic fingering and fan yin."
@@ -119,6 +119,34 @@
       "duration": 60,
       "mood": "chilled",
       "notes": "1h speaking session with ChatGPT live."
+    },
+    {
+      "date": "2026-07-14",
+      "activity": "Exercise",
+      "duration": 2,
+      "mood": "Chilled",
+      "notes": "2h table tennis session with Fede."
+    },
+    {
+      "date": "2026-07-15",
+      "activity": "English Learning",
+      "duration": 60,
+      "mood": "chilled",
+      "notes": "1h speaking session with ChatGPT live."
+    },
+    {
+      "date": "2026-07-15",
+      "activity": "Guqin practice ",
+      "duration": 15,
+      "mood": "calm",
+      "notes": "daily practice of basic fingering."
+    },
+    {
+      "date": "2026-07-15",
+      "activity": "Exercise",
+      "duration": 2,
+      "mood": "tired",
+      "notes": "2h table tennis session with Fede."
     }
   ]
 }
