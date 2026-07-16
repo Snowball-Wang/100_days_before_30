@@ -147,6 +147,27 @@
       "duration": 2,
       "mood": "tired",
       "notes": "2h table tennis session with Fede."
+    },
+    {
+      "date": "2026-07-16",
+      "activity": "Exercise",
+      "duration": 1,
+      "mood": "calm",
+      "notes": "30 mins walking to refresh my mind."
+    },
+    {
+      "date": "2026-07-16",
+      "activity": "Gupin Practice",
+      "duration": 15,
+      "mood": "calm",
+      "notes": "daily practice of basic fingering."
+    },
+    {
+      "date": "2026-07-16",
+      "activity": "English Learning",
+      "duration": 30,
+      "mood": "chilled",
+      "notes": "daily practice of IELTS Speaking test."
     }
   ]
 }
