@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-14",
+  "updated_at": "2026-07-19",
   "entries": [
     {
       "date": "2026-06-12",
@@ -157,7 +157,7 @@
     },
     {
       "date": "2026-07-16",
-      "activity": "Gupin Practice",
+      "activity": "Guqin Practice",
       "duration": 15,
       "mood": "calm",
       "notes": "daily practice of basic fingering."
@@ -168,6 +168,34 @@
       "duration": 30,
       "mood": "chilled",
       "notes": "daily practice of IELTS Speaking test."
+    },
+    {
+      "date": "2026-07-17",
+      "activity": "Exercise",
+      "duration": 1,
+      "mood": "exhausted",
+      "notes": "1h table tennis session with Fede."
+    },
+    {
+      "date": "2026-07-18",
+      "activity": "Exercise",
+      "duration": 2,
+      "mood": "chilled",
+      "notes": "5km walking with Yuxin after dinner."
+    },
+    {
+      "date": "2026-07-19",
+      "activity": "Exercise",
+      "duration": 2,
+      "mood": "tough",
+      "notes": "2km recovery run on Sunday."
+    },
+    {
+      "date": "2026-07-19",
+      "activity": "Guqin Practice",
+      "duration": 30,
+      "mood": "chilled",
+      "notes": "daily practice of basic fingering."
     }
   ]
 }
