@@ -196,6 +196,34 @@
       "duration": 30,
       "mood": "chilled",
       "notes": "daily practice of basic fingering."
+    },
+    {
+      "date": "2026-07-20",
+      "activity": "CS Study",
+      "duration": 120,
+      "mood": "excited",
+      "notes": "Set up the lab environment, work on lab 1."
+    },
+    {
+      "date": "2026-07-20",
+      "activity": "Exercise",
+      "duration": 1,
+      "mood": "light",
+      "notes": "1h table tennis session with Fede."
+    },
+    {
+      "date": "2026-07-22",
+      "activity": "Guqin Practice",
+      "duration": 60,
+      "mood": "chilled",
+      "notes": "Start to learn the second song."
+    },
+    {
+      "date": "2026-07-22",
+      "activity": "Exercise",
+      "duration": 2.5,
+      "mood": "serene",
+      "notes": "Commute to office by walking today."
     }
   ]
 }
