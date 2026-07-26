@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-19",
+  "updated_at": "2026-07-26",
   "entries": [
     {
       "date": "2026-06-12",
@@ -224,6 +224,34 @@
       "duration": 2.5,
       "mood": "serene",
       "notes": "Commute to office by walking today."
+    },
+    {
+      "date": "2026-07-24",
+      "activity": "Exercise",
+      "duration": 1.2,
+      "mood": "calm",
+      "notes": "30m walking from station to the flat."
+    },
+    {
+      "date": "2026-07-25",
+      "activity": "Exercise",
+      "duration": 4.2,
+      "mood": "calm",
+      "notes": "Morning walk from garage and afternoon walk to Trumpinton."
+    },
+    {
+      "date": "2026-07-25",
+      "activity": "Guqin Practice",
+      "duration": 1,
+      "mood": "chilled",
+      "notes": "Start learning the second song Cloud of Zen."
+    },
+    {
+      "date": "2026-07-26",
+      "activity": "Exercise",
+      "duration": 4.1,
+      "mood": "calm",
+      "notes": "Afternoon walk to the city center."
     }
   ]
 }
