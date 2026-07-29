@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-26",
+  "updated_at": "2026-07-28",
   "entries": [
     {
       "date": "2026-06-12",
@@ -252,6 +252,27 @@
       "duration": 4.1,
       "mood": "calm",
       "notes": "Afternoon walk to the city center."
+    },
+    {
+      "date": "2026-07-27",
+      "activity": "CS Study",
+      "duration": 120,
+      "mood": "focused",
+      "notes": "Revise the chapter 7 in CSAPP."
+    },
+    {
+      "date": "2026-07-28",
+      "activity": "Exercise",
+      "duration": 2,
+      "mood": "calm",
+      "notes": "Walk with Yuxin after dinner."
+    },
+    {
+      "date": "2026-07-28",
+      "activity": "English Learning",
+      "duration": 30,
+      "mood": "peaceful",
+      "notes": "30-min chat with GPT before sleep."
     }
   ]
 }
