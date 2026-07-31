@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-28",
+  "updated_at": "2026-07-30",
   "entries": [
     {
       "date": "2026-06-12",
@@ -273,6 +273,27 @@
       "duration": 30,
       "mood": "peaceful",
       "notes": "30-min chat with GPT before sleep."
+    },
+    {
+      "date": "2026-07-30",
+      "activity": "CS Study",
+      "duration": 120,
+      "mood": "intense",
+      "notes": "Completed xv6 chapter 1 reading and pingpong.c in lab 1."
+    },
+    {
+      "date": "2026-07-30",
+      "activity": "English Learning",
+      "duration": 60,
+      "mood": "constructive",
+      "notes": "Practiced my America Works speech with GPT as if I was Underwood."
+    },
+    {
+      "date": "2026-07-30",
+      "activity": "Exercise",
+      "duration": 3,
+      "mood": "refreshing",
+      "notes": "3km recovery run."
     }
   ]
 }
