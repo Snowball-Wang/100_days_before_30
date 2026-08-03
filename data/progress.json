@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-07-30",
+  "updated_at": "2026-08-03",
   "entries": [
     {
       "date": "2026-06-12",
@@ -242,7 +242,7 @@
     {
       "date": "2026-07-25",
       "activity": "Guqin Practice",
-      "duration": 1,
+      "duration": 30,
       "mood": "chilled",
       "notes": "Start learning the second song Cloud of Zen."
     },
@@ -294,6 +294,20 @@
       "duration": 3,
       "mood": "refreshing",
       "notes": "3km recovery run."
+    },
+    {
+      "date": "2026-08-01",
+      "activity": "Guqin Practice",
+      "duration": 30,
+      "mood": "strong",
+      "notes": "Continue my practice of the song Cloud of Zen."
+    },
+    {
+      "date": "2026-08-02",
+      "activity": "Exercise",
+      "duration": 4,
+      "mood": "tiring",
+      "notes": "8km walk before dinner."
     }
   ]
 }
