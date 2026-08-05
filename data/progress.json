@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-08-03",
+  "updated_at": "2026-08-05",
   "entries": [
     {
       "date": "2026-06-12",
@@ -308,6 +308,13 @@
       "duration": 4,
       "mood": "tiring",
       "notes": "8km walk before dinner."
+    },
+    {
+      "date": "2026-08-04",
+      "activity": "Exercise",
+      "duration": 2,
+      "mood": "exhausting",
+      "notes": "2h table tennis session."
     }
   ]
 }
